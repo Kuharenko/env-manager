@@ -55,8 +55,8 @@ Env Replacer provides several options to manage your environment files efficient
 ### Options
 
 - `--project` - Specify the environment name to replace. Example: `ua`
-- `--service` - List the service names to search, separated by commas. Example: `case-service,dictionary-service,import-service`
-- `--restore` - If set to `true`, projects will revert to their previous `.env` files.
+- `--service` - List the service names to search, separated by commas. Example: `case-service,dictionary-service,import-service`. You can also use shorter names for the services, such as: `case,dict,imp`
+- `--restore` - If set to `true`, projects will revert to their previous `.env` files
 
 ### Example Command
 
