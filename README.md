@@ -83,7 +83,7 @@ er --projects=case-service --restore=true
 
 ## Env files
 
-By default, project `.env` files are stored in the `/Users/yourusername/env-manager/concrete` directory. You can create a new configuration file, such as `test.env`, and then use it as follows:
+By default, project `.env` files are stored in the `/Users/yourusername/env-replacer/concrete` directory. You can create a new configuration file, such as `test.env`, and then use it as follows:
 
 ```sh
 php er --project=test
@@ -99,8 +99,8 @@ This command will replace the existing `.env` file in every service with a merge
 
 ## License
 
-Env Manager is open-source software licensed under the [MIT license](LICENSE).
+Env Replacer is open-source software licensed under the [MIT license](LICENSE).
 
 ---
 
-By following the above steps, you should be able to easily install and use Env Manager to manage your environment configurations across multiple projects efficiently.
+By following the above steps, you should be able to easily install and use Env Replacer to manage your environment configurations across multiple projects efficiently.
