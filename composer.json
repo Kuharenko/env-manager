@@ -17,6 +17,11 @@
       "App\\": "app/"
     }
   },
+  "scripts": {
+    "post-install-cmd": [
+      "composer dump-autoload"
+    ]
+  },
   "bin": [
     "em"
   ]
