@@ -4,7 +4,7 @@ namespace App;
 const GREEN_COLOR = "\033[32m";
 const RED_COLOR = "\033[31m";
 const DEFAULT_COLOR = "\033[0m";
-class EnvManager
+class EnvEstablisher
 {
     private string $projectDir = '';
     private string $managerDir = '';
@@ -21,7 +21,9 @@ class EnvManager
 
     public function run($targetEnv, $targetServices = null, $restore = false): void
     {
-        $this->generateResult($targetEnv);
+        if (!$restore) {
+            $this->generateResult($targetEnv);
+        }
 
         foreach (scandir($this->projectDir) as $project) {
             if ($this->isCreditorroProject($project, $targetServices)) {
@@ -32,12 +34,14 @@ class EnvManager
                     continue;
                 }
 
-                if (file_exists($envPath)) {
-                    $this->backup($envPath, $project);
-                }
+                if ($targetEnv) {
+                    if (file_exists($envPath)) {
+                        $this->backup($envPath, $project);
+                    }
 
-                file_put_contents($envPath, $this->envResult);
-                $this->showMessage('.env was configured with "' . $targetEnv . '" parameters for: ' . $project);
+                    file_put_contents($envPath, $this->envResult);
+                    $this->showMessage('.env was configured with "' . $targetEnv . '" parameters for: ' . $project);
+                }
             }
         }
     }
@@ -79,8 +83,7 @@ class EnvManager
     protected function getTargetContent($targetEnv): string
     {
         if (!$targetEnv) {
-            $this->showError("Target required");
-            die();
+            return '';
         }
 
         $targetPath = $this->concreteDir . '/' . $targetEnv . '.env';
@@ -127,6 +130,7 @@ class EnvManager
                 return true;
             }
         }
+
         return false;
     }
 

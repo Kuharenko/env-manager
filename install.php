@@ -3,7 +3,7 @@
 $username = exec('whoami');
 
 $projectsDir = ask("Your projects directory", "/Users/$username/projects");
-$managerDir = ask("Your env-manager directory", "/Users/$username/env-manager");
+$managerDir = ask("Your env-establisher directory", "/Users/$username/env-manager");
 
 $env = "PROJECTS_DIRECTORY={$projectsDir}" . PHP_EOL;
 $env .= "MANAGER_DIRECTORY={$managerDir}" . PHP_EOL;
@@ -21,7 +21,7 @@ if (!empty($managerDir) && !file_exists($managerDir)) {
 
     echo "Fill in the " . $managerDir . '/base.env' . ' with a common variables' . PHP_EOL;
     echo "Created " . $managerDir . '/concrete/example.env' . PHP_EOL;
-    echo "Usage: php em --target=example --projects=test" . PHP_EOL . PHP_EOL;
+    echo "Usage: php ee --project=example --service=test" . PHP_EOL . PHP_EOL;
 }
 
 echo "Configuration saved." . PHP_EOL;

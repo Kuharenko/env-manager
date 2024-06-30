@@ -1,12 +1,12 @@
-# Env Manager
+# Env Establisher
 
 ## Overview
 
-Env Manager is a powerful tool for managing environment files across multiple projects. It simplifies the process of switching between different environment configurations, ensuring consistency and reducing the risk of errors.
+Env Establisher is a powerful tool for managing environment files across multiple projects. It simplifies the process of switching between different environment configurations, ensuring consistency and reducing the risk of errors.
 
 ## Installation
 
-To install Env Manager globally using Composer, run the following command:
+To install Env Establisher globally using Composer, run the following command:
 
 ```bash
 composer global require kukharenko/env-manager
@@ -54,28 +54,30 @@ Env Manager provides several options to manage your environment files efficientl
 
 ### Options
 
-- `--target` - Required. Specify the environment name to replace. Example: `ua`
-- `--projects` - Optional. List the project names to search, separated by commas. Example: `case-service,dictionary-service,import-service`
-- `--restore` - Optional. If set to `1`, projects will revert to their previous `.env` files.
+- `--project` - Specify the environment name to replace. Example: `ua`
+- `--service` - List the service names to search, separated by commas. Example: `case-service,dictionary-service,import-service`
+- `--restore` - If set to `1`, projects will revert to their previous `.env` files.
 
 ### Example Command
 
 To replace environment files for all projects, run the following command:
 
 ```bash
-php em --target=ua
+php ee --project=ua
+php ee ua
 ```
 
 To replace environment files for the `case-service`, run the following command:
 
 ```bash
-php em --target=ua --projects=case-service
+php ee --project=ua --service=case-service
+php ee ua case-service
 ```
 
 To restore the previous `.env` file for `case-service`, run the following command:
 
 ```bash
-php em --target=ua --projects=case-service --restore=1
+php ee --projects=case-service --restore=true
 ```
 
 ## License
