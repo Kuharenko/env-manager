@@ -12,6 +12,11 @@ To install Env Manager globally using Composer, run the following command:
 composer global require kukharenko/env-manager
 ```
 
+Follow after install instructions:
+```bash
+Your projects directory: /Users/username/projects
+Your env-manager directory: /Users/username/env-manager
+```
 ### Verify Installation Path
 
 Ensure that `vendor/bin` is added to your `PATH` environment variable. You can check this by running:
