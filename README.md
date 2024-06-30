@@ -1,12 +1,12 @@
-# Env Establisher
+# Env Replacer
 
 ## Overview
 
-Env Establisher is a powerful tool for managing environment files across multiple projects. It simplifies the process of switching between different environment configurations, ensuring consistency and reducing the risk of errors.
+Env Replacer is a powerful tool for managing environment files across multiple projects. It simplifies the process of switching between different environment configurations, ensuring consistency and reducing the risk of errors.
 
 ## Installation
 
-To install Env Establisher globally using Composer, run the following command:
+To install Env Replacer globally using Composer, run the following command:
 
 ```bash
 composer global require kukharenko/env-manager
@@ -50,35 +50,52 @@ source ~/.bash_profile
 
 ## Usage
 
-Env Manager provides several options to manage your environment files efficiently:
+Env Replacer provides several options to manage your environment files efficiently:
 
 ### Options
 
 - `--project` - Specify the environment name to replace. Example: `ua`
 - `--service` - List the service names to search, separated by commas. Example: `case-service,dictionary-service,import-service`
-- `--restore` - If set to `1`, projects will revert to their previous `.env` files.
+- `--restore` - If set to `true`, projects will revert to their previous `.env` files.
 
 ### Example Command
 
 To replace environment files for all projects, run the following command:
 
 ```bash
-php ee --project=ua
-php ee ua
+php er --project=ua
+er ua
 ```
 
 To replace environment files for the `case-service`, run the following command:
 
 ```bash
-php ee --project=ua --service=case-service
-php ee ua case-service
+php er --project=ua --service=case-service
+er ua case-service
 ```
 
 To restore the previous `.env` file for `case-service`, run the following command:
 
 ```bash
-php ee --projects=case-service --restore=true
+php er --projects=case-service --restore=true
+er --projects=case-service --restore=true
 ```
+
+## Env files
+
+By default, project `.env` files are stored in the `/Users/yourusername/env-manager/concrete` directory. You can create a new configuration file, such as `test.env`, and then use it as follows:
+
+```sh
+php er --project=test
+```
+
+or shorter:
+
+```sh
+er test
+```
+
+This command will replace the existing `.env` file in every service with a merged version of `base.env` and `test.env`.
 
 ## License
 

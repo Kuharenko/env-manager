@@ -1,5 +1,5 @@
 {
-  "name": "kukharenko/env-establisher",
+  "name": "kukharenko/env-replacer",
   "description": "none",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -25,6 +25,6 @@
     ]
   },
   "bin": [
-    "ee"
+    "er"
   ]
 }

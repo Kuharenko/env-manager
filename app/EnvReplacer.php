@@ -4,7 +4,7 @@ namespace App;
 const GREEN_COLOR = "\033[32m";
 const RED_COLOR = "\033[31m";
 const DEFAULT_COLOR = "\033[0m";
-class EnvEstablisher
+class EnvReplacer
 {
     private string $projectDir = '';
     private string $managerDir = '';

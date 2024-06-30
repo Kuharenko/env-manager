@@ -18,6 +18,6 @@ $restore = $options['restore'] ?? ($options['r'] ?? ($argv[3] ?? false));
 
 $config = require(__DIR__ . '/config/params.php');
 
-$service = new App\EnvEstablisher($config);
+$service = new App\EnvReplacer($config);
 $service->run($projectEnv, $services, $restore);
 
