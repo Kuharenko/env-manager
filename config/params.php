@@ -7,5 +7,6 @@ $params = [
 
 $params['concreteManagerDirectory'] = $params['managerDirectory'] . '/concrete';
 $params['runtimeDirectory'] = $params['managerDirectory'] . '/runtime';
+$params['projectsDirectory'] = $params['managerDirectory'] . '/projects';
 
 return $params;

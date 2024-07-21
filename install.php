@@ -17,6 +17,7 @@ if (!empty($managerDir) && !file_exists($managerDir)) {
     mkdir($managerDir . '/concrete', 0755);
     mkdir($managerDir . '/backups', 0755);
     mkdir($managerDir . '/runtime', 0755);
+    mkdir($managerDir . '/projects', 0755);
 
     file_put_contents($managerDir . '/base.env', '');
     file_put_contents($runtimeDir . '/runtime.json', '{}', JSON_PRETTY_PRINT);

@@ -9,6 +9,7 @@ class EnvReplacer
     private string $projectDir = '';
     private string $managerDir = '';
     private string $concreteDir = '';
+    private string $projectsDir = '';
     private string $backupDir = '';
     private string $currentDate = '';
     private bool $backupEnabled = true;
@@ -45,7 +46,14 @@ class EnvReplacer
                         $this->backup($envPath, $project);
                     }
 
-                    file_put_contents($envPath, $this->envResult);
+                    $result = $this->envResult;
+
+                    if (file_exists($this->projectsDir . '/' . $project . '.env')) {
+                        $projectVariables = file_get_contents($this->projectsDir . '/' . $project . '.env');
+                        $result .= PHP_EOL . PHP_EOL .  $projectVariables;
+                    }
+
+                    file_put_contents($envPath, $result);
                     $this->showMessage('.env was configured with "' . $targetEnv . '" parameters for: ' . $project);
                 }
             }
@@ -149,6 +157,7 @@ class EnvReplacer
         $this->projectDir = $config['projectDirectory'];
         $this->managerDir = $config['managerDirectory'];
         $this->concreteDir = $config['concreteManagerDirectory'];
+        $this->projectsDir = $config['projectsDirectory'];
 
         $this->backupDir = $this->managerDir . '/backups';
         $this->currentDate = date('Y-m-d H.i');

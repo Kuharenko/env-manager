@@ -103,6 +103,16 @@ er test
 
 This command will replace the existing `.env` file in every service with a merged version of `base.env` and `test.env`.
 
+## Custom services
+To override variables for specific service, create `service-name.env` file  in the `/Users/yourusername/env-replacer/projects` directory with variables you want to add.
+
+```sh
+cat oauth-service.env
+
+# OAUTH
+AUTH_KEY=some value
+```
+
 ## License
 
 Env Replacer is open-source software licensed under the [MIT license](LICENSE).
