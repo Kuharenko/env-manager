@@ -59,6 +59,12 @@ Env Replacer provides several options to manage your environment files efficient
 - `--restore` - If set to `true`, projects will revert to their previous `.env` files
 
 ### Example Command
+Show current project configuration:
+
+```bash
+php er
+er
+```
 
 To replace environment files for all projects, run the following command:
 

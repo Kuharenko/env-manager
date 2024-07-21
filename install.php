@@ -4,6 +4,7 @@ $username = exec('whoami');
 
 $projectsDir = ask("Your projects directory", "/Users/$username/projects");
 $managerDir = ask("Your env-replacer directory", "/Users/$username/env-replacer");
+$runtimeDir = $managerDir . '/runtime';
 
 $env = "PROJECTS_DIRECTORY={$projectsDir}" . PHP_EOL;
 $env .= "MANAGER_DIRECTORY={$managerDir}" . PHP_EOL;
@@ -15,8 +16,10 @@ if (!empty($managerDir) && !file_exists($managerDir)) {
 
     mkdir($managerDir . '/concrete', 0755);
     mkdir($managerDir . '/backups', 0755);
+    mkdir($managerDir . '/runtime', 0755);
 
     file_put_contents($managerDir . '/base.env', '');
+    file_put_contents($runtimeDir . '/runtime.json', '{}', JSON_PRETTY_PRINT);
     file_put_contents($managerDir . '/concrete/example.env', 'EXAMPLE_VAR=1');
 
     echo "Fill in the " . $managerDir . '/base.env' . ' with a common variables' . PHP_EOL;

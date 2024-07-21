@@ -13,6 +13,7 @@ class EnvReplacer
     private string $currentDate = '';
     private bool $backupEnabled = true;
     private string $envResult = '';
+    private Runtime $runtime;
 
     public function __construct(array $config = [])
     {
@@ -21,7 +22,12 @@ class EnvReplacer
 
     public function run($targetEnv, $targetServices = null, $restore = false): void
     {
-        if (!$restore) {
+        if (empty($targetEnv) && empty($restore)) {
+            $this->showConfig();
+            return;
+        }
+
+        if (empty($restore)) {
             $this->generateResult($targetEnv);
         }
 
@@ -44,6 +50,8 @@ class EnvReplacer
                 }
             }
         }
+
+        $this->runtime->set('currentProject', $targetEnv);
     }
 
     protected function restore(string $envPath, string $project): void
@@ -136,6 +144,8 @@ class EnvReplacer
 
     private function init(array $config = []): void
     {
+        $this->runtime = Runtime::init($config);
+
         $this->projectDir = $config['projectDirectory'];
         $this->managerDir = $config['managerDirectory'];
         $this->concreteDir = $config['concreteManagerDirectory'];
@@ -167,5 +177,15 @@ class EnvReplacer
     private function showMessage($message): void
     {
         echo GREEN_COLOR . $message . DEFAULT_COLOR . PHP_EOL;
+    }
+
+    private function showConfig(): void
+    {
+        $config = $this->runtime->get('currentProject');
+        if (empty($config)) {
+            $this->showMessage('Your current configuration is not defined');
+        } else {
+            $this->showMessage('Your current configuration is `' . $config . '`');
+        }
     }
 }
